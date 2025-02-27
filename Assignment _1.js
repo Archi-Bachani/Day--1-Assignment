@@ -1,3 +1,5 @@
+const { last, forEach } = require("lodash");
+
 const members = [
     {name: 'Aman Makhija', age: 20},
     {name: 'Suresh Jsharma', age: 40},
@@ -11,13 +13,20 @@ const members = [
   
 console.log(" 1. Get array of first names of everyone \n")
 let names = members.map((val) => val.name)
-console.log(names)
+//console.log(names)
 let first_names = (names.map((val) => val.split(" ")[0]));
 console.log(first_names)
 
 console.log("2. Make everyone's last names in UPPERCASE in given array of objects\n")
 
-console.log(names.map((val) => val.split(" ")[1].toUpperCase()));
+console.log(names[names.length - 1])
+console.log(names.map((val) => {
+  let parts = val.split(" ");
+  parts[parts.length -1]= parts[parts.length -1].toUpperCase();
+  return parts.join(" ")
+
+}
+));
 
 console.log("3. Get entries where age is between 41-60\n")
 
@@ -73,8 +82,9 @@ console.log(members.reduce((obj,person) => {
 
 
 console.log("7. add a new member to same members array instance at index 2")
-members[2] = {name : "Rachit Sharma", age : 18}
-console.log(members)
+
+members.splice(1, 0 , {name: "Rachit Sharma", age: 18});
+console.log(members);
 
 console.log("8. extract first and second element using destructing")
 
@@ -125,4 +135,4 @@ console.log(members.reduce((previous , current ) => {
   return previous
 },0));
 
-  
+
