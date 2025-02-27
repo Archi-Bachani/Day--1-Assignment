@@ -17,6 +17,8 @@ console.log(first_name)
 
 console.log("2. Make everyone's last names in UPPERCASE in given array of objects\n")
 
+console.log(_.map(members, (m) => _.last((_.split(_.toUpper(m.name), " ")))));
+
 
 console.log("3. Get entries where age is between 41-60\n")
 
@@ -43,14 +45,15 @@ console.log(_.maxBy(members, (val) => val.age));
 
 // }
 
-_.groupBy(members, (val) => {
-  if (!_.has(val.age)) return 'noage';
-  return val.age < 35 ? 'young' : 'old';
-})
+console.log(_.groupBy(members, (val) => {
+  if (!val.age) return 'noage';
+  return (val.age < 35 ? 'young' : 'old') ;
+//return (!_.hasIn(members, val.age)) ? 'noage' : val.age < 35 ? 'young' : 'old';
+}));
 
 console.log("7. add a new member to same members array instance at index 2")
 
-
+console.log(_.concat(_.slice(members,0,2),{name : "Rachit Sharma", age: 18}, _.slice(members,2)));
 
 console.log("8. extract first and second element using destructing")
 
@@ -64,19 +67,6 @@ console.log("9. Create a new array instance adding a new member at index 0,and k
 let arr = [{ name: "Jaya Chhabra", age: 48 }]
 let new_arr = _.concat(arr, members)
 console.log(new_arr)
-
-console.log("10. Extract properties of object using destructuring")
-
-
-console.log("11. Rename extracted property of object while destructing")
-
-
-
-console.log("12. Destructure any property of an object and use spread operator to get remaining properties in an object")
-
-
-
-console.log("13. Create a new object by copying using spread operator, override one of the properties to assign a new value in the same step")
 
 
 console.log("14. Use reduce function on array and object")
